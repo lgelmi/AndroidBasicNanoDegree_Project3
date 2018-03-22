@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Height -->
+    <dimen name="HeaderHeight">64dp</dimen>
+    <dimen name="FooterHeight">64dp</dimen>
+    <dimen name="QuestionSeparatorHeight">48dp</dimen>
+    <dimen name="TrueFalseHeight">48dp</dimen>
+    <!-- Fonts -->
+    <dimen name="IssueSize">18sp</dimen>
+    <dimen name="QuestionSize">14sp</dimen>
+    <dimen name="AnswerSize">14sp</dimen>
+
+    <!-- Padding -->
+    <dimen name="ImageVsTextCompensation">3dp</dimen>
+    <dimen name="StandardPadding">8dp</dimen>
+    <dimen name="KiloPadding">16dp</dimen>
+    <dimen name="MegaPadding">32dp</dimen>
+    <dimen name="GigaPadding">64dp</dimen>
+</resources>

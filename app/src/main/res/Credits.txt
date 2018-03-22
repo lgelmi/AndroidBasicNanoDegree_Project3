@@ -1,0 +1,4 @@
+National Geographic Logo: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/National-Geographic-Logo.svg/2000px-National-Geographic-Logo.svg.png
+Icon: Composition of Logo and https://cdn1.iconfinder.com/data/icons/soft-skills-glyph-black/2048/7597_-_Questioning_Skills-512.png
+True: https://commons.wikimedia.org/wiki/File%3ACheckmark_green.svg By Nobbler 76 (Own work) [Public domain], via Wikimedia Commons
+False: https://commons.wikimedia.org/wiki/File:Counter_Vandalism_Unit.svg

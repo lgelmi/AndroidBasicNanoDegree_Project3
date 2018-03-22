@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/KiloPadding">
+
+    <ImageView
+        android:id="@+id/Separator"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/QuestionSeparatorHeight"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/Separator"
+        android:paddingTop="@dimen/ImageVsTextCompensation"
+        app:srcCompat="@drawable/nationalgeographicrectangle" />
+
+    <TextView
+        android:id="@+id/QuestionNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/QuestionNumber"
+        app:layout_constraintBottom_toBottomOf="@+id/Separator"
+        app:layout_constraintEnd_toEndOf="@+id/Separator"
+        app:layout_constraintStart_toStartOf="@+id/Separator"
+        app:layout_constraintTop_toTopOf="@+id/Separator" />
+
+
+    <TextView
+        android:id="@+id/QuestionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingEnd="@dimen/StandardPadding"
+        android:paddingStart="@dimen/StandardPadding"
+        android:text="@string/DummyQuestion"
+        android:textSize="@dimen/QuestionSize"
+        app:layout_constraintStart_toEndOf="@+id/Separator"
+        app:layout_constraintTop_toTopOf="@+id/Separator" />
+
+    <TextView
+        android:id="@+id/TrueFalseSeparator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/TrueFalseSeparator"
+        app:layout_constraintBottom_toBottomOf="@+id/TrueButton"
+        app:layout_constraintEnd_toEndOf="@+id/QuestionText"
+        app:layout_constraintStart_toStartOf="@+id/QuestionText"
+        app:layout_constraintTop_toBottomOf="@+id/QuestionText" />
+
+    <ImageButton
+        android:id="@+id/TrueButton"
+        android:layout_width="@dimen/TrueFalseHeight"
+        android:layout_height="@dimen/TrueFalseHeight"
+        android:layout_margin="@dimen/StandardPadding"
+        android:contentDescription="@string/TrueDescription"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toStartOf="@+id/TrueFalseSeparator"
+        app:layout_constraintTop_toBottomOf="@+id/QuestionText"
+        app:srcCompat="@drawable/greencheck" />
+
+    <ImageButton
+        android:id="@+id/FalseButton"
+        android:layout_width="@dimen/TrueFalseHeight"
+        android:layout_height="@dimen/TrueFalseHeight"
+        android:layout_margin="@dimen/StandardPadding"
+        android:contentDescription="@string/FalseDescription"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toEndOf="@+id/TrueFalseSeparator"
+        app:layout_constraintTop_toBottomOf="@+id/QuestionText"
+        app:srcCompat="@drawable/bigredx" />
+
+
+</android.support.constraint.ConstraintLayout>

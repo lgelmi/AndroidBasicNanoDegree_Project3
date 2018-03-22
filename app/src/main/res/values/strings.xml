@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">HistoQuiz</string>
+    <string name="AppName">HistoQuiz</string>
+    <!-- Header -->
+    <string name="Issue">Issue %d: %s %d</string>
+    <string name="HistoQuizLogo">Histo Quiz Custom Logo</string>
+    <string name="NGLogo">National Geographic Official Logo</string>
+    <!-- Body -->
+    <string name="Separator">A decoration to identify a new question beginning</string>
+    <string name="DummyQuestion">This is a mockup question to check the layout.</string>
+    <string name="QuestionNumber">%d</string>
+    <string name="TrueFalseSeparator">or</string>
+    <string name="TrueDescription">This button sets the answer to False.</string>
+    <string name="FalseDescription">This button sets the answer to False.</string>
+    <!-- Buttons -->
+    <string name="SubmitButton">Submit</string>
+    <string name="ResetButton">Reset</string>
+    <!-- Footer -->
+    <string name="CompletedNumber">%d/%d Answered</string>
+
 </resources>
