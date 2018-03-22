@@ -2,13 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/MainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.android.histoquiz.MainActivity">
 
-
     <ScrollView
+        android:id="@+id/QuestionScroll"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
@@ -19,9 +20,12 @@
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
+            <!-- Header -->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/StandardPadding"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -59,83 +63,14 @@
                 android:textAlignment="center"
                 android:textSize="@dimen/IssueSize" />
 
+            <!-- Question (the job is done programmatically -->
 
-            <android.support.constraint.ConstraintLayout
+            <LinearLayout
+                android:id="@+id/QuestionList"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="@dimen/KiloPadding">
-
-                <ImageView
-                    android:id="@+id/Separator"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/QuestionSeparatorHeight"
-                    android:adjustViewBounds="true"
-                    android:contentDescription="@string/Separator"
-                    android:paddingTop="@dimen/ImageVsTextCompensation"
-                    app:srcCompat="@drawable/nationalgeographicrectangle" />
-
-                <TextView
-                    android:id="@+id/QuestionNumber"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/QuestionNumber"
-                    app:layout_constraintBottom_toBottomOf="@+id/Separator"
-                    app:layout_constraintEnd_toEndOf="@+id/Separator"
-                    app:layout_constraintStart_toStartOf="@+id/Separator"
-                    app:layout_constraintTop_toTopOf="@+id/Separator" />
-
-
-                <TextView
-                    android:id="@+id/QuestionText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingEnd="@dimen/StandardPadding"
-                    android:paddingStart="@dimen/StandardPadding"
-                    android:textSize="@dimen/QuestionSize"
-                    android:text="@string/DummyQuestion"
-                    app:layout_constraintStart_toEndOf="@+id/Separator"
-                    app:layout_constraintTop_toTopOf="@+id/Separator" />
-
-                <TextView
-                    android:id="@+id/TrueFalseSeparator"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="12dp"
-                    android:text="@string/TrueFalseSeparator"
-                    app:layout_constraintBottom_toBottomOf="@+id/TrueButton"
-                    app:layout_constraintEnd_toEndOf="@+id/QuestionText"
-                    app:layout_constraintStart_toStartOf="@+id/QuestionText"
-                    app:layout_constraintTop_toBottomOf="@+id/QuestionText" />
-
-                <ImageButton
-                    android:id="@+id/TrueButton"
-                    android:layout_width="@dimen/TrueFalseHeight"
-                    android:layout_height="@dimen/TrueFalseHeight"
-                    android:layout_margin="@dimen/StandardPadding"
-                    android:scaleType="fitCenter"
-                    app:layout_constraintEnd_toStartOf="@+id/TrueFalseSeparator"
-                    app:layout_constraintTop_toBottomOf="@+id/QuestionText"
-                    app:srcCompat="@drawable/greencheck" />
-
-                <ImageButton
-                    android:id="@+id/FalseButton"
-                    android:layout_width="@dimen/TrueFalseHeight"
-                    android:layout_height="@dimen/TrueFalseHeight"
-                    android:layout_margin="@dimen/StandardPadding"
-                    android:scaleType="fitCenter"
-                    app:layout_constraintStart_toEndOf="@+id/TrueFalseSeparator"
-                    app:layout_constraintTop_toBottomOf="@+id/QuestionText"
-                    app:srcCompat="@drawable/bigredx" />
-
-
-            </android.support.constraint.ConstraintLayout>
-
-            <ListView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -146,25 +81,28 @@
                     android:id="@+id/SubmitButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/KiloPadding"
+                    android:layout_margin="@dimen/MegaPadding"
                     android:layout_weight="1"
-                    android:text="@string/SubmitButton"
-                    android:textAlignment="center" />
+                    android:background="@color/colorPrimary"
+                    android:text="@string/SubmitButton"/>
 
                 <Button
                     android:id="@+id/ResetButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/KiloPadding"
+                    android:layout_margin="@dimen/MegaPadding"
                     android:layout_weight="1"
-                    android:text="@string/ResetButton" />
-
+                    android:onClick="reset"
+                    android:text="@string/ResetButton"
+                    android:background="@color/colorPrimary"/>
 
             </LinearLayout>
 
         </LinearLayout>
 
     </ScrollView>
+
+    <!-- Progresses -->
 
     <LinearLayout
         android:layout_width="match_parent"

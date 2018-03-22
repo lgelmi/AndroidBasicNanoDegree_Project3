@@ -6,14 +6,17 @@
     <dimen name="QuestionSeparatorHeight">48dp</dimen>
     <dimen name="TrueFalseHeight">48dp</dimen>
     <!-- Fonts -->
-    <dimen name="IssueSize">18sp</dimen>
-    <dimen name="QuestionSize">14sp</dimen>
-    <dimen name="AnswerSize">14sp</dimen>
+    <dimen name="IssueSize">20sp</dimen>
+    <dimen name="QuestionSize">18sp</dimen>
+    <dimen name="AnswerSize">16sp</dimen>
 
     <!-- Padding -->
     <dimen name="ImageVsTextCompensation">3dp</dimen>
     <dimen name="StandardPadding">8dp</dimen>
     <dimen name="KiloPadding">16dp</dimen>
     <dimen name="MegaPadding">32dp</dimen>
+    <dimen name="HalfGigaPadding">48dp</dimen>
     <dimen name="GigaPadding">64dp</dimen>
+    <dimen name="TeraPadding">128dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 </resources>

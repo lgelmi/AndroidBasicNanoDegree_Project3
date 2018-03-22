@@ -1,0 +1,25 @@
+{
+  "Issue": 46,
+  "Month": "February",
+  "Year": 2018,
+  "Questions": [
+    {
+      "Type": "True/False",
+      "Title": "Nabucodonosor II, legendary Babylon king",
+      "Body": "Nabucodonosor II never managed to conquer Jerusalem. As a matter of fact, he is remembered for going insane due to his obsession for the city.",
+      "Answer": false
+    },
+    {
+      "Type": "True/False",
+      "Title": "Rome's Women",
+      "Body": "In ancient Rome, a widow had the authority to maintain relationships with other men.",
+      "Answer": false
+    },
+    {
+      "Type": "True/False",
+      "Title": "The Rise of a Modern Metropolis",
+      "Body": "The Empire State Building, in May 1930, counted 102 floors.",
+      "Answer": true
+    }
+  ]
+}

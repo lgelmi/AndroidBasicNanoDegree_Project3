@@ -6,6 +6,7 @@
     <string name="NGLogo">National Geographic Official Logo</string>
     <!-- Body -->
     <string name="Separator">A decoration to identify a new question beginning</string>
+    <string name="DummyTitle">Mockup Title</string>
     <string name="DummyQuestion">This is a mockup question to check the layout.</string>
     <string name="QuestionNumber">%d</string>
     <string name="TrueFalseSeparator">or</string>
