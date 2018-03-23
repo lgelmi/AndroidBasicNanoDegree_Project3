@@ -2,11 +2,8 @@ package com.example.android.histoquiz;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 /**
  * Created by Lorenzo on 22/03/2018.
@@ -43,25 +40,32 @@ public class TrueFalseQuestion extends HistoQuestion {
         progress.update();
     }
 
+    public TrueFalseQuestion(Context context) {
+        /*
+        Just call to its parent. Java is special like that.
+         */
+        super(context);
+    }
+
+    public TrueFalseQuestion(Context context, AttributeSet attrs) {
+        /*
+        Just call to its parent. Java is special like that.
+         */
+        super(context, attrs);
+    }
+
+    public TrueFalseQuestion(Context context, AttributeSet attrs, int defStyleAttr) {
+        /*
+        Just call to its parent. Java is special like that.
+         */
+        super(context, attrs, defStyleAttr);
+    }
+
     public TrueFalseQuestion(Context context, ProgressHandler progress) {
         /*
         Just call to its parent. Java is special like that.
          */
         super(context, progress);
-    }
-
-    public TrueFalseQuestion(Context context, AttributeSet attrs, ProgressHandler progress) {
-        /*
-        Just call to its parent. Java is special like that.
-         */
-        super(context, attrs, progress);
-    }
-
-    public TrueFalseQuestion(Context context, AttributeSet attrs, int defStyleAttr, ProgressHandler progress) {
-        /*
-        Just call to its parent. Java is special like that.
-         */
-        super(context, attrs, defStyleAttr, progress);
     }
 
     // Initialize the view instances
@@ -71,7 +75,7 @@ public class TrueFalseQuestion extends HistoQuestion {
         trueButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                truePressed(v);
+                truePressed();
 
             }
         });
@@ -79,7 +83,7 @@ public class TrueFalseQuestion extends HistoQuestion {
         falseButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                falsePressed(v);
+                falsePressed();
 
             }
         });
@@ -89,7 +93,7 @@ public class TrueFalseQuestion extends HistoQuestion {
         return R.layout.true_false_question_view;
     }
 
-    public void truePressed(View view) {
+    public void truePressed() {
         /*
         Change the current selected answer.
          */
@@ -97,7 +101,7 @@ public class TrueFalseQuestion extends HistoQuestion {
         else setCurrentAnswer(true);
     }
 
-    public void falsePressed(View view) {
+    public void falsePressed() {
         /*
         Change the current selected answer.
          */
@@ -112,7 +116,7 @@ public class TrueFalseQuestion extends HistoQuestion {
         return currentAnswer != null;
     }
 
-    public void reset(){
+    public void reset() {
         /*
         Reset the question to an initial state.
          */

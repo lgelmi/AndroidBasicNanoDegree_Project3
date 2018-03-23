@@ -4,11 +4,7 @@ import android.content.Context;
 import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
 
 /**
  * Created by Lorenzo on 22/03/2018.
@@ -59,29 +55,37 @@ public abstract class HistoQuestion extends ConstraintLayout {
         questionBodyText.setText(this.questionBody);
     }
 
+    // TODO I should think to some way to automatically get the progress handler...
+
+    public HistoQuestion(Context context) {
+        /*
+        Just setup an empty view.
+         */
+        super(context);
+        initView(context);
+    }
+
+    public HistoQuestion(Context context, AttributeSet attrs) {
+         /*
+        Just setup an empty view.
+         */
+        super(context, attrs);
+        initView(context);
+    }
+
+    public HistoQuestion(Context context, AttributeSet attrs, int defStyleAttr) {
+         /*
+        Just setup an empty view.
+         */
+        super(context, attrs, defStyleAttr);
+        initView(context);
+    }
+
     public HistoQuestion(Context context, ProgressHandler progress) {
         /*
         Just setup an empty view.
          */
         super(context);
-        this.progress = progress;
-        initView(context);
-    }
-
-    public HistoQuestion(Context context, AttributeSet attrs, ProgressHandler progress) {
-         /*
-        Just setup an empty view.
-         */
-        super(context, attrs);
-        this.progress = progress;
-        initView(context);
-    }
-
-    public HistoQuestion(Context context, AttributeSet attrs, int defStyleAttr, ProgressHandler progress) {
-         /*
-        Just setup an empty view.
-         */
-        super(context, attrs, defStyleAttr);
         this.progress = progress;
         initView(context);
     }

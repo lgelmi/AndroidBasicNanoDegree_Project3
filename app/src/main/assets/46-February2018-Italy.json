@@ -4,6 +4,33 @@
   "Year": 2018,
   "Questions": [
     {
+      "Type": "MultipleAnswer",
+      "Title": "The Wheellock Pistol",
+      "Body": "The main andvantages (and dangers) of  the Wheellock Pistol are:",
+      "Answer": [
+        1,
+        2
+      ],
+      "Options": [
+        "The reloading: faster recharge.",
+        "The ignition. Permitting to hide the weapon under the clothes.",
+        "The magazine: more ammo, means more deaths.",
+        "The gunsight. Allowing to hit a target tenth of meters away without fail."
+      ]
+    },
+    {
+      "Type": "MultipleChoice",
+      "Title": "The Batavia Shipwreck",
+      "Body": "Among the following events, which one never happened once the Batavia shipwrecked.",
+      "Answer": 3,
+      "Options": [
+        "The survivor were split among several minor islands with the purpose of letting them die of starvation.",
+        "During a dinner, six out of seven preacher's sons were killed by axe. The seventh \"voluntarily\" became concubine of one of the aggressors.",
+        "The ship captain and first officer were killed in their sleep using parts of the ship as murder weapon.",
+        "Once captured, the violence leader tried to suicide before the execution. Since the poison was spoiled, he just ended up passing his last hours between vomit and diarrhea."
+      ]
+    },
+    {
       "Type": "True/False",
       "Title": "Nabucodonosor II, legendary Babylon king",
       "Body": "Nabucodonosor II never managed to conquer Jerusalem. As a matter of fact, he is remembered for going insane due to his obsession for the city.",

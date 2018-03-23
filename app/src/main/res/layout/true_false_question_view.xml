@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
         android:id="@+id/QuestionTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/DummyTitle"
-        android:textStyle="bold"
         android:textSize="@dimen/IssueSize"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/Separator"
         app:layout_constraintStart_toEndOf="@+id/QuestionNumber" />
 
@@ -40,8 +37,8 @@
         android:id="@+id/QuestionBody"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/HalfGigaPadding"
         android:layout_marginEnd="@dimen/StandardPadding"
+        android:layout_marginStart="@dimen/HalfGigaPadding"
         android:text="@string/DummyQuestion"
         android:textSize="@dimen/QuestionSize"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,6 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/TrueFalseSeparator"
+
         app:layout_constraintBottom_toBottomOf="@+id/TrueButton"
         app:layout_constraintEnd_toEndOf="@+id/QuestionBody"
         app:layout_constraintStart_toStartOf="@+id/QuestionBody"
@@ -61,8 +59,9 @@
     <ImageButton
         android:id="@+id/TrueButton"
         android:layout_width="@dimen/TrueFalseHeight"
-        android:layout_height="@dimen/TrueFalseHeight"
+        android:layout_height="0dp"
         android:layout_margin="@dimen/KiloPadding"
+        android:adjustViewBounds="true"
         android:background="@null"
         android:contentDescription="@string/TrueDescription"
         android:scaleType="fitCenter"
@@ -73,8 +72,9 @@
     <ImageButton
         android:id="@+id/FalseButton"
         android:layout_width="@dimen/TrueFalseHeight"
-        android:layout_height="@dimen/TrueFalseHeight"
+        android:layout_height="0dp"
         android:layout_margin="@dimen/KiloPadding"
+        android:adjustViewBounds="true"
         android:background="@null"
         android:contentDescription="@string/FalseDescription"
         android:scaleType="fitCenter"
@@ -82,4 +82,4 @@
         app:layout_constraintTop_toBottomOf="@+id/QuestionBody"
         app:srcCompat="@drawable/bigredx" />
 
-</android.support.constraint.ConstraintLayout>
+</merge>

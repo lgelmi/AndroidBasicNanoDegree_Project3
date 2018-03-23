@@ -8,11 +8,16 @@ import android.util.JsonToken;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         questionParams.setMargins(questionPadding, questionPadding, questionPadding, questionPadding);
         questionParams.weight = 1;
         progress = new ProgressHandler(findViewById(R.id.MainLayout));
+        progress.update();
         try {
             loadJSON();
         } catch (IOException ex) {
@@ -92,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
         String questionStringAnswer;
         int questionIntAnswer;
         reader.beginArray();
+        List<String> options;
         while (reader.hasNext()) {
             questionType = "";
             questionTitle = "";
@@ -99,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
             questionStringAnswer = "";
             questionBoolAnswer = true;
             questionIntAnswer = 0;
+            options = new ArrayList<>();
             reader.beginObject();
             while (reader.hasNext()) {
                 String name = reader.nextName();
@@ -128,6 +136,14 @@ public class MainActivity extends AppCompatActivity {
                                 reader.skipValue();
                         }
                         break;
+                    case "Options":
+                        reader.beginArray();
+                        while (reader.hasNext()) {
+                            String prova = reader.nextString();
+                            options.add(prova);
+                        }
+                        reader.endArray();
+                        break;
                     default:
                         reader.skipValue();
                         break;
@@ -135,21 +151,37 @@ public class MainActivity extends AppCompatActivity {
             }
             reader.endObject();
             switch (questionType) {
-                case "True/False": {
-                    TrueFalseQuestion question = new TrueFalseQuestion(this, progress);
-                    question.setQuestionNumber(questionNumber);
-                    question.setQuestionTitle(questionTitle);
-                    question.setQuestionBody(questionBody);
-                    question.correctAnswer = questionBoolAnswer;
-                    questionList.addView(question, questionParams);
+                case "True/False":
+                    TrueFalseQuestion trueFalseQuestion = new TrueFalseQuestion(this, progress);
+                    trueFalseQuestion.setQuestionNumber(questionNumber);
+                    trueFalseQuestion.setQuestionTitle(questionTitle);
+                    trueFalseQuestion.setQuestionBody(questionBody);
+                    trueFalseQuestion.correctAnswer = questionBoolAnswer;
+                    questionList.addView(trueFalseQuestion, questionParams);
                     questionNumber++;
-                }
+                    break;
+                case "MultipleChoice":
+                    MultipleChoiceQuestion multipleChoiceQuestion = new MultipleChoiceQuestion(this, progress);
+                    multipleChoiceQuestion.setQuestionNumber(questionNumber);
+                    multipleChoiceQuestion.setQuestionTitle(questionTitle);
+                    multipleChoiceQuestion.setQuestionBody(questionBody);
+                    multipleChoiceQuestion.correctAnswer = questionIntAnswer;
+                    for (int i = 0; i < options.size(); i++) {
+                        RadioButton option = new RadioButton(this);
+                        option.setText(options.get(i));
+                        option.setPadding(questionPadding / 2, questionPadding / 2, questionPadding / 2, questionPadding / 2);
+                        multipleChoiceQuestion.addOption(option, i);
+                    }
+                    int a =0 ;
+                    questionList.addView(multipleChoiceQuestion, questionParams);
+                    questionNumber++;
+                    break;
             }
         }
         reader.endArray();
     }
 
-    public void reset(View view){
+    public void reset(View view) {
         /*
         Disable all current answer and update the progresses.
          */
@@ -180,8 +212,6 @@ class ProgressHandler {
         progress = view.findViewById(R.id.QuizProgressBar);
         progressText = view.findViewById(R.id.CompletionText);
         questionList = view.findViewById(R.id.QuestionList);
-        update();
-
     }
 
     public int getAnswered() {
@@ -219,6 +249,4 @@ class ProgressHandler {
         progress.setProgress(answered);
         progressText.setText(context.getResources().getString(R.string.CompletedNumber, answered, questionNumber));
     }
-
-
 }
