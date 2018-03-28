@@ -2,81 +2,82 @@ package com.example.android.histoquiz;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.View;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import java.util.List;
+
 /**
- * Created by Lorenzo on 23/03/2018.
+ * Created by Lorenzo on 28/03/2018.
  * <p>
- * A Multiple Choice question View.
+ * A Multiple Answer question View.
  */
 
-public class MultipleChoiceQuestion extends HistoQuestion {
+public class MultipleAnswerQuestion extends HistoQuestion {
 
     // View parts
-    RadioGroup optionList;
-
+    LinearLayout optionList;
 
     // The question correctAnswer
-    public int correctAnswer;
+    public List<Integer> correctAnswer;
 
-    public MultipleChoiceQuestion(Context context) {
+    public MultipleAnswerQuestion(Context context) {
         /*
         Just call to its parent. Java is special like that.
          */
         super(context);
     }
 
-    public MultipleChoiceQuestion(Context context, AttributeSet attrs) {
+    public MultipleAnswerQuestion(Context context, AttributeSet attrs) {
         /*
         Just call to its parent. Java is special like that.
          */
         super(context, attrs);
     }
 
-    public MultipleChoiceQuestion(Context context, AttributeSet attrs, int defStyleAttr) {
+    public MultipleAnswerQuestion(Context context, AttributeSet attrs, int defStyleAttr) {
         /*
         Just call to its parent. Java is special like that.
          */
         super(context, attrs, defStyleAttr);
     }
 
-    public MultipleChoiceQuestion(Context context, ProgressHandler progress) {
+    public MultipleAnswerQuestion(Context context, ProgressHandler progress) {
         /*
         Just call to its parent. Java is special like that.
          */
         super(context, progress);
     }
 
-    // Initialize the view instances
-    protected void initView(Context context) {
-        super.initView(context);
-        optionList = findViewById(R.id.questionGroup);
-        optionList.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                progress.update();
-            }
-        });
-    }
-
     protected int getLayout() {
-        return R.layout.multiple_choice_view;
+        return R.layout.multiple_answer_view;
     }
 
     public boolean isAnswered() {
         /*
         Just recognizes whether there is a currently selected answer.
          */
-        return optionList.indexOfChild(findViewById(optionList.getCheckedRadioButtonId())) + 1 != 0;
+        for (int i = 0; i < optionList.getChildCount(); i++) {
+            View option = optionList.getChildAt(i);
+            if (option instanceof CheckBox)
+                if(((CheckBox) option).isChecked())
+                    return true;
+        }
+        return false;
     }
 
     public void reset() {
         /*
         Reset the question to an initial state.
          */
-        optionList.clearCheck();
+        for (int i = 0; i < optionList.getChildCount(); i++) {
+            View option = optionList.getChildAt(i);
+            if (option instanceof CheckBox)
+                ((CheckBox) option).setChecked(false);
+        }
     }
 
     public void addOption(RadioButton option, int index) {

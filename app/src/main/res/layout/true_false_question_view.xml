@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
 
     <TextView
         android:id="@+id/QuestionTitle"
@@ -48,38 +48,41 @@
     <TextView
         android:id="@+id/TrueFalseSeparator"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
         android:text="@string/TrueFalseSeparator"
-
-        app:layout_constraintBottom_toBottomOf="@+id/TrueButton"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/QuestionBody"
         app:layout_constraintStart_toStartOf="@+id/QuestionBody"
-        app:layout_constraintTop_toTopOf="@+id/TrueButton" />
+        app:layout_constraintTop_toBottomOf="@+id/QuestionBody" />
 
     <ImageButton
         android:id="@+id/TrueButton"
         android:layout_width="@dimen/TrueFalseHeight"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/TrueFalseHeight"
         android:layout_margin="@dimen/KiloPadding"
         android:adjustViewBounds="true"
         android:background="@null"
         android:contentDescription="@string/TrueDescription"
         android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/TrueFalseSeparator"
         app:layout_constraintEnd_toStartOf="@+id/TrueFalseSeparator"
-        app:layout_constraintTop_toBottomOf="@+id/QuestionBody"
+        app:layout_constraintTop_toTopOf="@+id/TrueFalseSeparator"
         app:srcCompat="@drawable/greencheck" />
 
     <ImageButton
         android:id="@+id/FalseButton"
         android:layout_width="@dimen/TrueFalseHeight"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/TrueFalseHeight"
         android:layout_margin="@dimen/KiloPadding"
         android:adjustViewBounds="true"
         android:background="@null"
         android:contentDescription="@string/FalseDescription"
         android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/TrueFalseSeparator"
         app:layout_constraintStart_toEndOf="@+id/TrueFalseSeparator"
-        app:layout_constraintTop_toBottomOf="@+id/QuestionBody"
+        app:layout_constraintTop_toTopOf="@+id/TrueFalseSeparator"
         app:srcCompat="@drawable/bigredx" />
 
 </merge>

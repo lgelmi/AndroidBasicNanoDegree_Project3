@@ -37,6 +37,17 @@
       "Answer": false
     },
     {
+      "Type": "MultipleChoice",
+      "Title": "The Explosive Guy Fawkes",
+      "Body": "Guy Fawkes is the most known face of the infamous Gunpowder Plot, but what was his role among the thirteen catholics that schemed it?",
+      "Answer": 1,
+      "Options": [
+        "The ex soldier that was guarding the gunpowder barrels when the scheme was discovered.",
+        "The original founder of the group, that served as inspiration for the plot.",
+        "The first to join the group and second in command. He led the last stand once the plot was discovered."
+      ]
+    },
+    {
       "Type": "True/False",
       "Title": "Rome's Women",
       "Body": "In ancient Rome, a widow had the authority to maintain relationships with other men.",

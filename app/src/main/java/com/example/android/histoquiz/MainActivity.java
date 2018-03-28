@@ -15,8 +15,6 @@ import android.widget.TextView;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -167,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
                     multipleChoiceQuestion.setQuestionBody(questionBody);
                     multipleChoiceQuestion.correctAnswer = questionIntAnswer;
                     for (int i = 0; i < options.size(); i++) {
-                        RadioButton option = new RadioButton(this);
+                        RadioButton option = new ToggleableRadioButton(this);
                         option.setText(options.get(i));
                         option.setPadding(questionPadding / 2, questionPadding / 2, questionPadding / 2, questionPadding / 2);
                         multipleChoiceQuestion.addOption(option, i);
@@ -214,7 +212,7 @@ class ProgressHandler {
         questionList = view.findViewById(R.id.QuestionList);
     }
 
-    public int getAnswered() {
+    private int getAnswered() {
         /*
         Counts the number of completed question.
          */
@@ -227,7 +225,7 @@ class ProgressHandler {
         return answered;
     }
 
-    public int getQuestionNumber() {
+    private int getQuestionNumber() {
          /*
         Counts the number of question.
          */
