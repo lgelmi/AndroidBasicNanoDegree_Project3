@@ -4,13 +4,14 @@
 
     <TextView
         android:id="@+id/QuestionTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/DummyTitle"
         android:textSize="@dimen/IssueSize"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/Separator"
-        app:layout_constraintStart_toEndOf="@+id/QuestionNumber" />
+        app:layout_constraintStart_toEndOf="@+id/QuestionNumber"
+        app:layout_constraintEnd_toEndOf="@id/QuestionBody" />
 
     <ImageView
         android:id="@+id/Separator"

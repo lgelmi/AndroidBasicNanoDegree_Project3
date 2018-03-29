@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -56,6 +57,11 @@ public class MultipleAnswerQuestion extends HistoQuestion {
         return R.layout.multiple_answer_view;
     }
 
+    protected void initView(Context context) {
+        super.initView(context);
+        optionList = findViewById(R.id.questionGroup);
+    }
+
     public boolean isAnswered() {
         /*
         Just recognizes whether there is a currently selected answer.
@@ -63,8 +69,10 @@ public class MultipleAnswerQuestion extends HistoQuestion {
         for (int i = 0; i < optionList.getChildCount(); i++) {
             View option = optionList.getChildAt(i);
             if (option instanceof CheckBox)
-                if(((CheckBox) option).isChecked())
+                if (((CheckBox) option).isChecked()) {
                     return true;
+                }
+
         }
         return false;
     }
@@ -80,11 +88,17 @@ public class MultipleAnswerQuestion extends HistoQuestion {
         }
     }
 
-    public void addOption(RadioButton option, int index) {
+    public void addOption(CheckBox option, int index) {
         /*
         Interface for adding options to the question.
          */
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        optionList.addView(option, index, params);
+        option.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton option, boolean isChecked) {
+                progress.update();
+            }
+        });
+        optionList.addView(option, params);
     }
 }

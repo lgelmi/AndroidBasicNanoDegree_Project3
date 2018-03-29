@@ -69,6 +69,8 @@
                 android:id="@+id/QuestionList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:descendantFocusability="beforeDescendants"
+                android:focusableInTouchMode="true"
                 android:gravity="center_horizontal"
                 android:orientation="vertical" />
 
@@ -84,7 +86,7 @@
                     android:layout_margin="@dimen/MegaPadding"
                     android:layout_weight="1"
                     android:background="@color/colorPrimary"
-                    android:text="@string/SubmitButton"/>
+                    android:text="@string/SubmitButton" />
 
                 <Button
                     android:id="@+id/ResetButton"
@@ -92,9 +94,9 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/MegaPadding"
                     android:layout_weight="1"
+                    android:background="@color/colorPrimary"
                     android:onClick="reset"
-                    android:text="@string/ResetButton"
-                    android:background="@color/colorPrimary"/>
+                    android:text="@string/ResetButton" />
 
             </LinearLayout>
 

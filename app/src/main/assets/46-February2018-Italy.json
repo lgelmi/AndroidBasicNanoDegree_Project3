@@ -4,6 +4,12 @@
   "Year": 2018,
   "Questions": [
     {
+      "Type": "Completion",
+      "Title": "Defending the first American \"text\"",
+      "Body": "In order to save Texas cave painting, the %s project will save them through state of the art imaging techniques. The project name is inspired to the legendary egyptian library.",
+      "Answer": "Alexandria"
+    },
+    {
       "Type": "MultipleAnswer",
       "Title": "The Wheellock Pistol",
       "Body": "The main andvantages (and dangers) of  the Wheellock Pistol are:",
@@ -37,6 +43,31 @@
       "Answer": false
     },
     {
+      "Type": "Completion",
+      "Title": "The Gaugamela Battle",
+      "Body": "In 331 BC Dario's army was deployed in battle position: the Great King was in the center, flanked by the noble cavalry and the %s squadron.",
+      "Answer": "Immortals"
+    },
+    {
+      "Type": "MultipleAnswer",
+      "Title": "Looking for Genghis Khan's Tomb",
+      "Body": "For what reasons is it so hard to find Genghis Khan Tomb?",
+      "Answer": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "Options": [
+        "Thousands of horses trampled the ground to hide any trace and thousands of tree where planted there and in the surrounding area.",
+        "Mongolians don't want to find the tomb, as this would mean to disturb Genghis Khan slumber.",
+        "All those that took part to the funeral were killed shortly after the ceremony. Then the guards that did it were killed themselves.",
+        "It is hard to choose a place to look, since mongolians where nomads.",
+        "Russia itself doesn't like people to look for it."
+      ]
+    },
+    {
       "Type": "MultipleChoice",
       "Title": "The Explosive Guy Fawkes",
       "Body": "Guy Fawkes is the most known face of the infamous Gunpowder Plot, but what was his role among the thirteen catholics that schemed it?",
@@ -52,6 +83,12 @@
       "Title": "Rome's Women",
       "Body": "In ancient Rome, a widow had the authority to maintain relationships with other men.",
       "Answer": false
+    },
+    {
+      "Type": "Completion",
+      "Title": "Martin Guerre",
+      "Body": "The most convinced about Martin Guerre impostor being the real one was his %s, to the point that for three years they continued their life as before he disappeared.",
+      "Answer": "wife"
     },
     {
       "Type": "True/False",

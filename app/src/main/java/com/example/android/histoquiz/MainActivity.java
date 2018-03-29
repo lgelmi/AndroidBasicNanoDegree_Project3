@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.JsonReader;
 import android.util.JsonToken;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     // View Elements
     TextView issueText;
     LinearLayout questionList;
-    LinearLayout.LayoutParams questionParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 0);
+    LinearLayout.LayoutParams questionParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0);
     int questionPadding;
     ProgressHandler progress;
 
@@ -93,17 +94,19 @@ public class MainActivity extends AppCompatActivity {
         String questionTitle;
         String questionBody;
         boolean questionBoolAnswer;
-        String questionStringAnswer;
+        ArrayList<Integer> questionListAnswer;
         int questionIntAnswer;
+        String questionStringAnswer;
         reader.beginArray();
         List<String> options;
         while (reader.hasNext()) {
             questionType = "";
             questionTitle = "";
             questionBody = "";
-            questionStringAnswer = "";
             questionBoolAnswer = true;
             questionIntAnswer = 0;
+            questionListAnswer = new ArrayList<>();
+            questionStringAnswer = "";
             options = new ArrayList<>();
             reader.beginObject();
             while (reader.hasNext()) {
@@ -124,11 +127,18 @@ public class MainActivity extends AppCompatActivity {
                             case BOOLEAN:
                                 questionBoolAnswer = reader.nextBoolean();
                                 break;
-                            case STRING:
-                                questionStringAnswer = reader.nextString();
+                            case BEGIN_ARRAY:
+                                reader.beginArray();
+                                while (reader.hasNext()) {
+                                    questionListAnswer.add(reader.nextInt());
+                                }
+                                reader.endArray();
                                 break;
                             case NUMBER:
                                 questionIntAnswer = reader.nextInt();
+                                break;
+                            case STRING:
+                                questionStringAnswer = reader.nextString();
                                 break;
                             default:
                                 reader.skipValue();
@@ -137,8 +147,7 @@ public class MainActivity extends AppCompatActivity {
                     case "Options":
                         reader.beginArray();
                         while (reader.hasNext()) {
-                            String prova = reader.nextString();
-                            options.add(prova);
+                            options.add(reader.nextString());
                         }
                         reader.endArray();
                         break;
@@ -149,6 +158,15 @@ public class MainActivity extends AppCompatActivity {
             }
             reader.endObject();
             switch (questionType) {
+                case "Completion":
+                    CompletionQuestion completionQuestion = new CompletionQuestion(this, progress);
+                    completionQuestion.setQuestionNumber(questionNumber);
+                    completionQuestion.setQuestionTitle(questionTitle);
+                    completionQuestion.setQuestionBody(questionBody);
+                    completionQuestion.correctAnswer = questionStringAnswer;
+                    questionList.addView(completionQuestion, questionParams);
+                    questionNumber++;
+                    break;
                 case "True/False":
                     TrueFalseQuestion trueFalseQuestion = new TrueFalseQuestion(this, progress);
                     trueFalseQuestion.setQuestionNumber(questionNumber);
@@ -170,8 +188,22 @@ public class MainActivity extends AppCompatActivity {
                         option.setPadding(questionPadding / 2, questionPadding / 2, questionPadding / 2, questionPadding / 2);
                         multipleChoiceQuestion.addOption(option, i);
                     }
-                    int a =0 ;
                     questionList.addView(multipleChoiceQuestion, questionParams);
+                    questionNumber++;
+                    break;
+                case "MultipleAnswer":
+                    MultipleAnswerQuestion multipleAnswerQuestion = new MultipleAnswerQuestion(this, progress);
+                    multipleAnswerQuestion.setQuestionNumber(questionNumber);
+                    multipleAnswerQuestion.setQuestionTitle(questionTitle);
+                    multipleAnswerQuestion.setQuestionBody(questionBody);
+                    multipleAnswerQuestion.correctAnswer = questionListAnswer;
+                    for (int i = 0; i < options.size(); i++) {
+                        CheckBox option = new CheckBox(this);
+                        option.setText(options.get(i));
+                        option.setPadding(questionPadding / 2, questionPadding / 2, questionPadding / 2, questionPadding / 2);
+                        multipleAnswerQuestion.addOption(option, i);
+                    }
+                    questionList.addView(multipleAnswerQuestion, questionParams);
                     questionNumber++;
                     break;
             }
