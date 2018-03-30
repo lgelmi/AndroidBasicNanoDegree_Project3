@@ -116,6 +116,16 @@ public class TrueFalseQuestion extends HistoQuestion {
         return currentAnswer != null;
     }
 
+    @Override
+    public float correctness() {
+        if (!isAnswered())
+            return 0;
+        else if (currentAnswer == correctAnswer)
+            return 1;
+        else
+            return -1;
+    }
+
     public void reset() {
         /*
         Reset the question to an initial state.

@@ -72,6 +72,17 @@ public class MultipleChoiceQuestion extends HistoQuestion {
         return optionList.indexOfChild(findViewById(optionList.getCheckedRadioButtonId())) + 1 != 0;
     }
 
+    @Override
+    public float correctness() {
+        int currentAnswer = optionList.indexOfChild(findViewById(optionList.getCheckedRadioButtonId())) + 1;
+        if ( currentAnswer == correctAnswer)
+            return 1;
+        else if (currentAnswer == 0)
+            return 0;
+        else
+            return -1;
+    }
+
     public void reset() {
         /*
         Reset the question to an initial state.

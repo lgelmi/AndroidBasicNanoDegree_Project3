@@ -14,8 +14,23 @@
     <string name="FalseDescription">This button sets the answer to False.</string>
     <!-- Buttons -->
     <string name="SubmitButton">Submit</string>
-    <string name="ResetButton">Reset</string>
+    <string name="ResetButton">Reset Test</string>
     <!-- Footer -->
     <string name="CompletedNumber">%d/%d Answered</string>
-
+    <!-- Submission -->
+    <string name="ScoreValue">Your total score is %.1f/%d!</string>
+    <string-array name="ScoreEvaluation">
+        <item>No! Just no! You did it on purpose didn\'t you?</item>
+        <item>Oh God Why…</item>
+        <item>Well… This is disappointing!</item>
+        <item>Surely you can do better than this! Try reading NG History!</item>
+        <item>You were unlucky! Read NG History and you will surely improve!</item>
+        <item>You\'re in the middle. NG History can help you raise to the top!</item>
+        <item>Not the worst score there is. Surely you could use NG History!</item>
+        <item>A nice score indeed. But still far from the top. Read NG History to reach further!</item>
+        <item>Quite a satisfying result! You can smooth your culture by reading some more NG History!</item>
+        <item>My sincere congratulations. Dare to approach perfection? Read NG History!</item>
+        <item>You raised the bar! For more interesting facts keep reading NG History!</item>
+    </string-array>
+    <string name="TryAgainButton">Change Answers</string>
 </resources>

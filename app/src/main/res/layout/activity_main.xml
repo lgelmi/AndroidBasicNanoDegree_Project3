@@ -20,12 +20,13 @@
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
-            <!-- Header -->
+            <!-- Header. I set this focusable to make sure the activity starts from the top -->
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/StandardPadding"
+                android:focusableInTouchMode="true"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -45,10 +46,7 @@
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
                     android:contentDescription="@string/HistoQuizLogo"
-                    android:paddingBottom="@dimen/StandardPadding"
-                    android:paddingEnd="@dimen/StandardPadding"
-                    android:paddingStart="@dimen/StandardPadding"
-                    android:paddingTop="@dimen/StandardPadding"
+                    android:padding="@dimen/StandardPadding"
                     android:scaleType="fitStart"
                     app:srcCompat="@drawable/histoquiz" />
 
@@ -69,8 +67,6 @@
                 android:id="@+id/QuestionList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:descendantFocusability="beforeDescendants"
-                android:focusableInTouchMode="true"
                 android:gravity="center_horizontal"
                 android:orientation="vertical" />
 
@@ -86,6 +82,7 @@
                     android:layout_margin="@dimen/MegaPadding"
                     android:layout_weight="1"
                     android:background="@color/colorPrimary"
+                    android:onClick="submit"
                     android:text="@string/SubmitButton" />
 
                 <Button
@@ -95,7 +92,7 @@
                     android:layout_margin="@dimen/MegaPadding"
                     android:layout_weight="1"
                     android:background="@color/colorPrimary"
-                    android:onClick="reset"
+                    android:onClick="viewReset"
                     android:text="@string/ResetButton" />
 
             </LinearLayout>

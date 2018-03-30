@@ -12,7 +12,7 @@
     {
       "Type": "MultipleAnswer",
       "Title": "The Wheellock Pistol",
-      "Body": "The main andvantages (and dangers) of  the Wheellock Pistol are:",
+      "Body": "The main andvantages (and dangers) of the Wheellock Pistol are:",
       "Answer": [
         1,
         2
@@ -51,7 +51,7 @@
     {
       "Type": "MultipleAnswer",
       "Title": "Looking for Genghis Khan's Tomb",
-      "Body": "For what reasons is it so hard to find Genghis Khan Tomb?",
+      "Body": "For what reasons is it so hard to find Genghis Khan's Tomb?",
       "Answer": [
         1,
         2,
@@ -60,7 +60,7 @@
         5
       ],
       "Options": [
-        "Thousands of horses trampled the ground to hide any trace and thousands of tree where planted there and in the surrounding area.",
+        "Thousands of horses trampled the ground to hide any trace and thousands of tree were planted there and in the surrounding area.",
         "Mongolians don't want to find the tomb, as this would mean to disturb Genghis Khan slumber.",
         "All those that took part to the funeral were killed shortly after the ceremony. Then the guards that did it were killed themselves.",
         "It is hard to choose a place to look, since mongolians where nomads.",
@@ -87,7 +87,7 @@
     {
       "Type": "Completion",
       "Title": "Martin Guerre",
-      "Body": "The most convinced about Martin Guerre impostor being the real one was his %s, to the point that for three years they continued their life as before he disappeared.",
+      "Body": "The most convinced about Martin Guerre's impostor being the real one was his %s, to the point that for three years they continued their life as before he disappeared.",
       "Answer": "wife"
     },
     {

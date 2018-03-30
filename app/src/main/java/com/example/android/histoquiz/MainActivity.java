@@ -1,6 +1,8 @@
 package com.example.android.histoquiz;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.JsonReader;
@@ -211,7 +213,14 @@ public class MainActivity extends AppCompatActivity {
         reader.endArray();
     }
 
-    public void reset(View view) {
+    public void viewReset(View view) {
+        /*
+        Disable all current answer and update the progresses.
+         */
+       reset();
+    }
+
+    private void reset() {
         /*
         Disable all current answer and update the progresses.
          */
@@ -223,6 +232,68 @@ public class MainActivity extends AppCompatActivity {
                 ((HistoQuestion) question).reset();
         }
         progress.update();
+    }
+
+    public void submit(View v) {
+        /*
+        Get the number of total point scored against the maximum one. Then, shows a dialog
+        displaying the results.
+         */
+        int questionNumber = 0;
+        float totalScore = 0;
+        for (int i = 0; i < questionList.getChildCount(); i++) {
+            View question = questionList.getChildAt(i);
+            if (question instanceof HistoQuestion) {
+                float score = ((HistoQuestion) question).correctness();
+                if (score > 1)
+                    score = 1;
+                if (score < -1)
+                    score = -1;
+                totalScore += score;
+                questionNumber++;
+            }
+        }
+        float normalizedScore = totalScore / questionNumber;
+        String resultEvaluation;
+        String[] evaluations = getResources().getStringArray(R.array.ScoreEvaluation);
+        if (normalizedScore < -0.9)
+            resultEvaluation = evaluations[0];
+        else if (normalizedScore < -0.7)
+            resultEvaluation = evaluations[1];
+        else if (normalizedScore < -0.5)
+            resultEvaluation = evaluations[2];
+        else if (normalizedScore < -0.3)
+            resultEvaluation = evaluations[3];
+        else if (normalizedScore < -0.1)
+            resultEvaluation = evaluations[4];
+        else if (normalizedScore < 0.1)
+            resultEvaluation = evaluations[5];
+        else if (normalizedScore < 0.3)
+            resultEvaluation = evaluations[6];
+        else if (normalizedScore < 0.5)
+            resultEvaluation = evaluations[7];
+        else if (normalizedScore < 0.7)
+            resultEvaluation = evaluations[8];
+        else if (normalizedScore < 0.9)
+            resultEvaluation = evaluations[9];
+        else
+            resultEvaluation = evaluations[10];
+        AlertDialog.Builder resultDialog = new AlertDialog.Builder(this);
+        resultDialog.setTitle(getResources().getString(R.string.ScoreValue, totalScore, questionNumber));
+        resultDialog.setMessage(resultEvaluation);
+        resultDialog.setPositiveButton(getResources().getString(R.string.ResetButton), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                reset();
+            }
+        });
+
+        resultDialog.setNegativeButton(getResources().getString(R.string.TryAgainButton),
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                    }
+                });
+
+        resultDialog.show();
     }
 }
 
@@ -269,7 +340,7 @@ class ProgressHandler {
         return questionNumber;
     }
 
-    public void update() {
+    void update() {
         /*
         Sets the progress based on the amount of completed answer, also sets the completion textview.
          */

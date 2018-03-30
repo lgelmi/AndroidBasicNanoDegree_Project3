@@ -77,6 +77,37 @@ public class MultipleAnswerQuestion extends HistoQuestion {
         return false;
     }
 
+    @Override
+    public float correctness() {
+        int correctChecks = 0;
+        int totalChecks = 0;
+        for (int e = 0; e < correctAnswer.size(); e++)
+            System.out.println("Correct Anwers " + correctAnswer.get(e));
+        for (int i = 0; i < optionList.getChildCount(); i++) {
+            View option = optionList.getChildAt(i);
+            if (option instanceof CheckBox) {
+                totalChecks++;
+                if (((CheckBox) option).isChecked()) {
+                    System.out.println("Checked " + (i + 1));
+                    if (correctAnswer.contains(i + 1))
+                        correctChecks++;
+                    else
+                        correctChecks--;
+                }
+            }
+        }
+        if (correctAnswer.size() == 0)
+            if (correctChecks == 0)
+                return 1;
+            else if (totalChecks != 0)
+                return correctChecks / totalChecks;
+            else
+                // I don't see how this could happen...
+                return -1;
+        else
+            return (float) correctChecks / correctAnswer.size();
+    }
+
     public void reset() {
         /*
         Reset the question to an initial state.

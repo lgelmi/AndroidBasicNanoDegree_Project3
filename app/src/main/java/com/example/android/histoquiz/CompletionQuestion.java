@@ -5,8 +5,6 @@ import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 /**
@@ -108,6 +106,62 @@ public class CompletionQuestion extends HistoQuestion {
          */
         String text = answer.getText().toString();
         return !text.trim().isEmpty();
+    }
+
+    // Algorithm from https://en.wikibooks.org/wiki/Algorithm_Implementation/Strings/Levenshtein_distance#Java
+    public int levenshteinDistance(CharSequence lhs, CharSequence rhs) {
+        int len0 = lhs.length() + 1;
+        int len1 = rhs.length() + 1;
+        // the array of distances
+        int[] cost = new int[len0];
+        int[] newcost = new int[len0];
+        // initial cost of skipping prefix in String s0
+        for (int i = 0; i < len0; i++) cost[i] = i;
+        // dynamically computing the array of distances
+        // transformation cost for each letter in s1
+        for (int j = 1; j < len1; j++) {
+            // initial cost of skipping prefix in String s1
+            newcost[0] = j;
+            // transformation cost for each letter in s0
+            for (int i = 1; i < len0; i++) {
+                // matching current letters in both strings
+                int match = (lhs.charAt(i - 1) == rhs.charAt(j - 1)) ? 0 : 1;
+                // computing cost for each transformation
+                int cost_replace = cost[i - 1] + match;
+                int cost_insert = cost[i] + 1;
+                int cost_delete = newcost[i - 1] + 1;
+                // keep minimum cost
+                newcost[i] = Math.min(Math.min(cost_insert, cost_delete), cost_replace);
+            }
+            // swap cost/newcost arrays
+            int[] swap = cost;
+            cost = newcost;
+            newcost = swap;
+        }
+        // the distance is the cost for transforming all letters in both strings
+        return cost[len0 - 1];
+    }
+
+    @Override
+    public float correctness() {
+        /*
+        Levenshtein checks for string similarity in their characters, not their meaning.
+        A proper app would implement also the second kind. But this is a job for someone else.
+         */
+        String answerText = answer.getText().toString();
+        if (answerText.trim().isEmpty())
+            return 0;
+        else {
+            int distance = levenshteinDistance(answerText, correctAnswer);
+            // I want a result comprised between -1 and 1
+            float normalizedDistance;
+            if(answerText.length() > correctAnswer.length())
+                normalizedDistance = (float) (answerText.length() - distance) / answerText.length();
+            else
+                normalizedDistance = (float) (correctAnswer.length() - distance) / correctAnswer.length();
+            // Answer that differs for most than 0.5 are wrong to me and deserves a negative score.
+            return 2 * normalizedDistance - 1;
+        }
     }
 
     public void reset() {

@@ -106,6 +106,9 @@ public abstract class HistoQuestion extends ConstraintLayout {
     // Forces the subclass to identify answered questions.
     public abstract boolean isAnswered();
 
+    // Forces the subclass to assign a score to the questions. This should be 1 at max.
+    public abstract float correctness();
+
     // Forces the subclass to implement a question reset.
     public abstract void reset();
 }
