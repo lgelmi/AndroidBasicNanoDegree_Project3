@@ -2,6 +2,7 @@
 HystoQuiz - An history quiz based on National Geographic History magazine.
 
 This project target is to realize a quiz app on something we know. Since I add a "Historica" (The italian version of National Geographic "History") magazine nearby, I decided to create a sort of commercial app that, with the proper improvements, could be used by National Geographic for advertising purposes.
+The questions are taken from some of the articles of the February 2018 Historica issue and should serve as a sort of encouragement to buy it. Of course, a proper app would have a quiz for each month and several links to buy the magazine itself or even just one article. Interesting images associated with each question might be useful too. But this is just a didactical project :).
 
 The main features are:
 * For type of question: Completion, True/False, Multiple Choice and Multiple Answer.
