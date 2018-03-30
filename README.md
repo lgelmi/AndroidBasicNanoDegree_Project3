@@ -17,6 +17,9 @@ Brief rules:
 * Multiple Choices are given a score +1 when the correct choice is selected, -1 otherwise.
 * Multiple Answer are given a score based on the number of correct anwers versus the wrong ones.
 
+If you want to check the answers (or change them :)), you can check the json settings file under app/src/main/assets/.
+
+
 What could be further improved:
 * Answers correction
 * Check for test completion when trying to submit.
