@@ -8,8 +8,8 @@ The main features are:
 * There is not a standard layout. A JSON file is compiled with the desired question list (with the proper syntax). The app reads it when started and dynamically generates the layout.
 * A progress bar follows the user below the main layout, so that we knows what's left to do.
 * The test can be reset at any time.
-* Submitting the test open a dialog box with results, commenting them and allowing the user to choose whether to change their answer or starting from scratch.
-* Each question can have either a positive or negative score. Any unanswered question is assigned a zero score.
+* Submitting the test open a dialog box (not a toast as stated in the project rubric. I hope to be forgiven!) with results, commenting them and allowing the user to choose whether to change their answer or starting from scratch. 
+* Each question can have either a positive or negative score. Any unanswered question is assigned a zero score. (This may differ a bit from the rubric assigned grading logic, but the rubric one is a bit ambigous to me...)
 
 Brief rules:
 * Completions are assigned a score based on the Levenshtein Distance between the correct answer and the given one.
