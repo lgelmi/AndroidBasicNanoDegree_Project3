@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     // View Elements
     TextView issueText;
     LinearLayout questionList;
-    LinearLayout.LayoutParams questionParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0);
+    LinearLayout.LayoutParams questionParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 0);
     int questionPadding;
     ProgressHandler progress;
 
@@ -35,9 +35,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         issueText = findViewById(R.id.IssueNumber);
         questionList = findViewById(R.id.QuestionList);
-        questionPadding = (int) (this.getResources().getDimension(R.dimen.KiloPadding) + 0.5f);
-        questionParams.setMargins(questionPadding, questionPadding, questionPadding, questionPadding);
-        questionParams.weight = 1;
+//        questionPadding = (int) (this.getResources().getDimension(R.dimen.KiloPadding) + 0.5f);
+//        questionParams.setMargins(questionPadding, questionPadding, questionPadding, questionPadding);
+//        questionParams.weight = 1;
         progress = new ProgressHandler(findViewById(R.id.MainLayout));
         progress.update();
         try {
@@ -160,24 +160,24 @@ public class MainActivity extends AppCompatActivity {
             }
             reader.endObject();
             switch (questionType) {
-                case "Completion":
-                    CompletionQuestion completionQuestion = new CompletionQuestion(this, progress);
-                    completionQuestion.setQuestionNumber(questionNumber);
-                    completionQuestion.setQuestionTitle(questionTitle);
-                    completionQuestion.setQuestionBody(questionBody);
-                    completionQuestion.correctAnswer = questionStringAnswer;
-                    questionList.addView(completionQuestion, questionParams);
-                    questionNumber++;
-                    break;
-                case "True/False":
-                    TrueFalseQuestion trueFalseQuestion = new TrueFalseQuestion(this, progress);
-                    trueFalseQuestion.setQuestionNumber(questionNumber);
-                    trueFalseQuestion.setQuestionTitle(questionTitle);
-                    trueFalseQuestion.setQuestionBody(questionBody);
-                    trueFalseQuestion.correctAnswer = questionBoolAnswer;
-                    questionList.addView(trueFalseQuestion, questionParams);
-                    questionNumber++;
-                    break;
+//                case "Completion":
+//                    CompletionQuestion completionQuestion = new CompletionQuestion(this, progress);
+//                    completionQuestion.setQuestionNumber(questionNumber);
+//                    completionQuestion.setQuestionTitle(questionTitle);
+//                    completionQuestion.setQuestionBody(questionBody);
+//                    completionQuestion.correctAnswer = questionStringAnswer;
+//                    questionList.addView(completionQuestion, questionParams);
+//                    questionNumber++;
+//                    break;
+//                case "True/False":
+//                    TrueFalseQuestion trueFalseQuestion = new TrueFalseQuestion(this, progress);
+//                    trueFalseQuestion.setQuestionNumber(questionNumber);
+//                    trueFalseQuestion.setQuestionTitle(questionTitle);
+//                    trueFalseQuestion.setQuestionBody(questionBody);
+//                    trueFalseQuestion.correctAnswer = questionBoolAnswer;
+//                    questionList.addView(trueFalseQuestion, questionParams);
+//                    questionNumber++;
+//                    break;
                 case "MultipleChoice":
                     MultipleChoiceQuestion multipleChoiceQuestion = new MultipleChoiceQuestion(this, progress);
                     multipleChoiceQuestion.setQuestionNumber(questionNumber);
@@ -190,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
                         option.setPadding(questionPadding / 2, questionPadding / 2, questionPadding / 2, questionPadding / 2);
                         multipleChoiceQuestion.addOption(option, i);
                     }
-                    questionList.addView(multipleChoiceQuestion, questionParams);
+                    questionList.addView(multipleChoiceQuestion);
                     questionNumber++;
                     break;
                 case "MultipleAnswer":
@@ -205,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
                         option.setPadding(questionPadding / 2, questionPadding / 2, questionPadding / 2, questionPadding / 2);
                         multipleAnswerQuestion.addOption(option, i);
                     }
-                    questionList.addView(multipleAnswerQuestion, questionParams);
+                    questionList.addView(multipleAnswerQuestion);
                     questionNumber++;
                     break;
             }
