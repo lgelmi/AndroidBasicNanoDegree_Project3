@@ -95,7 +95,9 @@ public abstract class HistoQuestion extends LinearLayout {
     protected void initView(Context context) {
         LayoutInflater.from(context).inflate(getLayout(), this, true);
         this.context = this.getContext();
-        this.setOrientation(LinearLayout.VERTICAL);
+        setOrientation(LinearLayout.VERTICAL);
+        setFocusable(true);
+        setFocusableInTouchMode(true);
         questionNumberText = findViewById(R.id.QuestionNumber);
         questionTitleText = findViewById(R.id.QuestionTitle);
         questionBodyText = findViewById(R.id.QuestionBody);

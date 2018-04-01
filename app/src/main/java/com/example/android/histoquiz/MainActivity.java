@@ -35,9 +35,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         issueText = findViewById(R.id.IssueNumber);
         questionList = findViewById(R.id.QuestionList);
-//        questionPadding = (int) (this.getResources().getDimension(R.dimen.KiloPadding) + 0.5f);
-//        questionParams.setMargins(questionPadding, questionPadding, questionPadding, questionPadding);
-//        questionParams.weight = 1;
+        questionPadding = (int) (this.getResources().getDimension(R.dimen.KiloPadding) + 0.5f);
+        questionParams.setMargins(questionPadding, questionPadding, questionPadding, questionPadding);
+        questionParams.weight = 1;
         progress = new ProgressHandler(findViewById(R.id.MainLayout));
         progress.update();
         try {
@@ -160,24 +160,24 @@ public class MainActivity extends AppCompatActivity {
             }
             reader.endObject();
             switch (questionType) {
-//                case "Completion":
-//                    CompletionQuestion completionQuestion = new CompletionQuestion(this, progress);
-//                    completionQuestion.setQuestionNumber(questionNumber);
-//                    completionQuestion.setQuestionTitle(questionTitle);
-//                    completionQuestion.setQuestionBody(questionBody);
-//                    completionQuestion.correctAnswer = questionStringAnswer;
-//                    questionList.addView(completionQuestion, questionParams);
-//                    questionNumber++;
-//                    break;
-//                case "True/False":
-//                    TrueFalseQuestion trueFalseQuestion = new TrueFalseQuestion(this, progress);
-//                    trueFalseQuestion.setQuestionNumber(questionNumber);
-//                    trueFalseQuestion.setQuestionTitle(questionTitle);
-//                    trueFalseQuestion.setQuestionBody(questionBody);
-//                    trueFalseQuestion.correctAnswer = questionBoolAnswer;
-//                    questionList.addView(trueFalseQuestion, questionParams);
-//                    questionNumber++;
-//                    break;
+                case "Completion":
+                    CompletionQuestion completionQuestion = new CompletionQuestion(this, progress);
+                    completionQuestion.setQuestionNumber(questionNumber);
+                    completionQuestion.setQuestionTitle(questionTitle);
+                    completionQuestion.setQuestionBody(questionBody);
+                    completionQuestion.correctAnswer = questionStringAnswer;
+                    questionList.addView(completionQuestion);
+                    questionNumber++;
+                    break;
+                case "True/False":
+                    TrueFalseQuestion trueFalseQuestion = new TrueFalseQuestion(this, progress);
+                    trueFalseQuestion.setQuestionNumber(questionNumber);
+                    trueFalseQuestion.setQuestionTitle(questionTitle);
+                    trueFalseQuestion.setQuestionBody(questionBody);
+                    trueFalseQuestion.correctAnswer = questionBoolAnswer;
+                    questionList.addView(trueFalseQuestion);
+                    questionNumber++;
+                    break;
                 case "MultipleChoice":
                     MultipleChoiceQuestion multipleChoiceQuestion = new MultipleChoiceQuestion(this, progress);
                     multipleChoiceQuestion.setQuestionNumber(questionNumber);

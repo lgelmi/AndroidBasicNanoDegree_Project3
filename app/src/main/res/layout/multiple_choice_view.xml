@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
         android:id="@+id/QuestionTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/KiloPadding"
         android:layout_marginStart="@dimen/MegaPadding"
-        android:padding="@dimen/StandardPadding"
         android:text="@string/DummyTitle"
         android:textSize="@dimen/IssueSize"
         android:textStyle="bold" />
