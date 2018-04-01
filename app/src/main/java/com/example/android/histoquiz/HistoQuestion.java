@@ -1,9 +1,9 @@
 package com.example.android.histoquiz;
 
 import android.content.Context;
-import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
@@ -12,7 +12,7 @@ import android.widget.TextView;
  * A generic class for any question
  */
 
-public abstract class HistoQuestion extends ConstraintLayout {
+public abstract class HistoQuestion extends LinearLayout {
 
     // View parts
     Context context;
@@ -95,6 +95,9 @@ public abstract class HistoQuestion extends ConstraintLayout {
     protected void initView(Context context) {
         LayoutInflater.from(context).inflate(getLayout(), this, true);
         this.context = this.getContext();
+        setOrientation(LinearLayout.VERTICAL);
+        setFocusable(true);
+        setFocusableInTouchMode(true);
         questionNumberText = findViewById(R.id.QuestionNumber);
         questionTitleText = findViewById(R.id.QuestionTitle);
         questionBodyText = findViewById(R.id.QuestionBody);

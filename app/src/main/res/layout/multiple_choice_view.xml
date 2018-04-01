@@ -4,56 +4,55 @@
 
     <TextView
         android:id="@+id/QuestionTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/DummyTitle"
-        android:textSize="@dimen/IssueSize"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/Separator"
-        app:layout_constraintStart_toEndOf="@+id/QuestionNumber"
-        app:layout_constraintEnd_toEndOf="@id/QuestionBody" />
-
-    <ImageView
-        android:id="@+id/Separator"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/QuestionSeparatorHeight"
-        android:layout_marginEnd="8dp"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/Separator"
-        android:paddingTop="@dimen/ImageVsTextCompensation"
-        app:layout_constraintEnd_toStartOf="@+id/QuestionBody"
-        app:srcCompat="@drawable/nationalgeographicrectangle" />
-
-    <TextView
-        android:id="@+id/QuestionNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/QuestionNumber"
-        app:layout_constraintBottom_toBottomOf="@+id/Separator"
-        app:layout_constraintEnd_toEndOf="@+id/Separator"
-        app:layout_constraintStart_toStartOf="@+id/Separator"
-        app:layout_constraintTop_toTopOf="@+id/Separator" />
-
-    <TextView
-        android:id="@+id/QuestionBody"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/StandardPadding"
-        android:layout_marginStart="@dimen/HalfGigaPadding"
-        android:text="@string/DummyQuestion"
-        android:textSize="@dimen/QuestionSize"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/Separator" />
-
-    <RadioGroup
-        android:id="@+id/questionGroup"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/KiloPadding"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/QuestionBody"
-        app:layout_constraintTop_toBottomOf="@id/QuestionBody" />
+        android:layout_marginStart="@dimen/MegaPadding"
+        android:text="@string/DummyTitle"
+        android:textSize="@dimen/IssueSize"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/StandardPadding">
+
+        <ImageView
+            android:id="@+id/Separator"
+            android:layout_width="@dimen/QuestionSeparatorHeight"
+            android:layout_height="@dimen/QuestionSeparatorHeight"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/Separator"
+            app:srcCompat="@drawable/nationalgeographicrectangle" />
+
+        <TextView
+            android:id="@+id/QuestionNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/Separator"
+            android:layout_alignEnd="@id/Separator"
+            android:layout_alignStart="@+id/Separator"
+            android:layout_alignTop="@id/Separator"
+            android:gravity="center"
+            android:text="@string/QuestionNumber" />
+
+        <TextView
+            android:id="@+id/QuestionBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/Separator"
+            android:text="@string/DummyQuestion"
+            android:textSize="@dimen/QuestionSize" />
+
+        <RadioGroup
+            android:id="@+id/questionGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/QuestionBody"
+            android:layout_alignStart="@id/QuestionBody"
+            android:layout_below="@id/QuestionBody" />
+
+    </RelativeLayout>
+
 
 </merge>
